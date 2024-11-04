@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" th:href="@{/css/bill_style.css}" />
+</head>
+<body >
+
+	<!-- Outermost box -->
+	<div id="mydiv">
+	<table class="my-table">
+	<tr>
+	<td>
+	<span class="GSTIN">GSTIN : 23CESPS0515N1Z2</span>
+	<span class="jaimaa">| |  जय माँ   | |</span>
+	<span class="mob1">Mob.: 9827617412</span>
+<br><br>
+	<span class="mpcode">M.P. Code : 23</span>
+	<span class="GST"><u class="u_gst">GST Invoice</u></span>
+	<span class="mob2">Mob.: 8319182661</span>
+	<br><br><h1 class="text-center">SUNIL ORNAMENTS</h1>
+	</td>
+	</tr>
+	<tr>
+	<td class="phool text-center">Phool Chandra Chowk, SATNA - 485001 (M.P.)</td>
+	</tr>
+		<tr>
+		<td>
+		<div class="row">
+		<div class="col-lg-6 mb-1">
+		<div class="card" style="width: 31.5pc;">
+  <ul class="list-group">
+    <li class="list-group-item">M/S.  &nbsp;<u><span th:text="${bills.name}"></span></u></li>
+    <li class="list-group-item"></li>
+    <li class="list-group-item">...........................................................................................</li>
+    <li class="list-group-item"></li>
+    <li class="list-group-item">GSTIN No. &nbsp;<u><span th:if="${bills.gstin_no!=''}" th:text="${bills.gstin_no}"></span></u>
+    <span th:unless="${bills.gstin_no!=''}">.....................................................................</span></li>
+    <li class="list-group-item"></li>
+    <li class="list-group-item"></li>
+    <li class="list-group-item"></li>
+
+  </ul>
+</div>
+</div>
+<div class="col-lg-6 mb-1">
+<div class="card" style="width: 31.5pc;">
+  <ul class="list-group">
+    <li class="list-group-item">Invoice No. &nbsp;<u><span th:text="${bills.invoice_no}"></span></u></li>
+    <li class="list-group-item">Date &nbsp;&nbsp;<u><span th:text="${bills.date}"></span></u></li>
+    <li class="list-group-item">State Code. &nbsp; 23</li>
+    <li class="list-group-item">Aadhar No. &nbsp;
+    <u><span th:if="${bills.aadhar_no!=''}" th:text="${bills.aadhar_no}"></span></u>
+    <span th:unless="${bills.aadhar_no!=''}">.....................................................................</span></li>
+    <li class="list-group-item">Pan No. &nbsp; <u><span th:if="${bills.pan_no!=''}" th:text="${bills.pan_no}"></span></u>
+    <span th:unless="${bills.pan_no!=''}">...........................................................................</span></li>
+  </ul>
+</div>
+</div>
+	</td>
+	</tr>
+	</table>
+	<table class="table table-bordered" style="text-align: center;">
+			<tr class="tr_bordered">
+			<td>&nbsp;Particulars</td>
+			<td>HSN/SAC CODE</td>
+			<td>WEIGHT</td>
+			<td>RATE</td>
+			<td>AMOUNT</td>
+			</tr>
+			<tr class="tr_bordered">
+			<td th:text="'&nbsp;'+${bills.particulars}"></td>
+			<td>7113</td>
+			<td th:text="${bills.weight}+' gm'"></td>
+			<td th:text="${bills.rate}+' /-'"></td>
+			<td th:text="${bills.amount}"></td>
+			</tr>
+			<th:block th:each="i: ${#numbers.sequence(1, 20)}">
+			<tr class="tr_unbordered">
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			</th:block>
+			<tr class="tr_bordered">
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			
+	</table>
+	<div class="row">
+		<div class="col-lg-6">
+	<div class="card" style="width: 32pc;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item line">Total Invoice In Words:- <u><span th:text="${bills.total_invoice_value_inwords}"></span></u></li>
+        <li class="list-group-item"><hr style="border: 2px solid navy; background-color:pink;"></li>
+    <li class="list-group-item">Bank Details:</li>
+    <li class="list-group-item">Bank Name: State Bank of India</li>
+    <li class="list-group-item">Branch: Bihari Chowk, Satna</li>
+    <li class="list-group-item">Bank A/c. No. 35924235989</li>
+    <li class="list-group-item">Bank IFSC Code: SBIN0030178</li>
+    <li class="list-group-item"><hr style="border: 2px solid navy; background-color:pink;"></li>
+    <li class="list-group-item">All Subject to SATNA Jurisdiction</li>
+    <li class="list-group-item">E.& O.E.</li>
+  </ul>
+</div>
+</div>
+
+
+<div class="col-lg-6 mb-4">
+<div class="card" style="width: 32pc;">
+  <table class="mytable2"  style="height: 22pc;">
+  <tr style="text-align: center;">
+  <td>TOTAL TAXABLE VALUE :</td>
+  <td th:text="${bills.amount}"></td>
+  </tr>
+  <tr style="text-align: center;">
+  <td>CGST @  &nbsp;<u> &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; 1.5 &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;</u> %</td>
+  <td th:text="${bills.cgst}"></td>
+  </tr>
+  <tr style="text-align: center;">
+  <td>SGST @  &nbsp;<u> &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; 1.5 &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;</u> %</td>
+  <td th:text="${bills.sgst}"></td>
+  </tr>
+  <tr style="text-align: center;">
+  <td> &nbspIGST @  &nbsp;....................................%</td>
+  <td></td>
+  </tr>
+  <tr style="text-align: center;">
+  <td style="text-align: right">NET TOTAL &nbsp;</td>
+  <td th:text="${bills.net_total}"></td>
+  </tr>  
+</table>
+<div class="tr_bordered" style="background-color: pink">
+<br><div class="footer">  For: Sunil Ornaments</div><br><br>
+ <div class="footer"> Aut. Signature</div>  
+</div>
+</div>
+</div>
+	</div>
+	</div>
+	
+</body>
+</html>

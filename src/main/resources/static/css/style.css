@@ -1,0 +1,158 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.a:hover {
+  color: red;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 7px;
+  margin: 15px;
+}
+.row {
+  padding-top: 3pc;
+  padding-left: 8pc;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.Sex {
+  color: beige;
+}
+.a {
+  text-decoration: none;
+  color: black;
+}
+.gender {
+  width: 9pc;
+  color: brown;
+  position: absolute;
+  top: 10px;
+  left: 24pc;
+}
+.category-1 {
+  width: 15pc;
+  position: absolute;
+  top: 40px;
+  left: 130px;
+}
+.category {
+  color: brown;
+  width: 8pc;
+}
+.d-block {
+  height: 90vh;
+}
+.about-us {
+  text-align: center;
+}
+.ul:hover {
+  background-color: rgb(242, 188, 51);
+}
+.about:hover {
+  background-color: pink;
+}
+.dropdown-menu {
+  width: 40pc;
+}
+.Gold-Diamond {
+  height: 57px;
+  width: auto;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.logos:hover {
+  height: 60px;
+}
+.logos {
+  height: 30px;
+  width: auto;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.navbar-brand {
+  font-weight: bolder;
+  font-family: cursive;
+}
+.slogan:hover {
+  text-decoration: underline;
+}
+.slogan {
+  color: white;
+  font-weight: bold;
+}
+
+.sidebar {
+  width: 18%;
+  z-index: 9999999999999999999999999999;
+  background: white;
+  position: fixed;
+  height: 100%;
+  padding-top: 45px;
+}
+.sidebar a {
+  display: block;
+  width: 100%;
+  padding: 10px 25px;
+  color: gray;
+  text-decoration: none;
+}
+.sidebar a:hover {
+  background: #e2e2e2;
+}
+.sidebar .divider {
+  height: 5px;
+  width: 100%;
+  background: #e2e2e2;
+  margin-top: 10px;
+}
+.content {
+  margin-left: 18.8%;
+}
+.bar{
+	margin-top: 50px;
+	margin-left:10px;
+	margin-bottom:10px;
+}
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    display: none;
+    width: 80% !important;
+    background: white;
+    position: fixed;
+    height: 100vh;
+    padding-top: 20px;
+  }
+}
+.my-table{
+	border: 1px solid navy;
+	width:101%;
+}
+.my-table tr{
+	border: 1px solid navy;
+	width:101%;
+}
+.sidebar .crossBtn {
+  position: absolute;
+  top: 0;
+  right: 35px;
+  font-size: 36px;
+  cursor: pointer;
+}
+.contact-card{
+	margin-right: 13px;
+}
+.my-card {
+  padding: 20px;
+  background: #ffffff;
+}
+
+.view-bill-details{
+	color:navy;
+}

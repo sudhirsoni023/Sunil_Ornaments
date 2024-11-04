@@ -1,0 +1,109 @@
+body{
+background-color:pink; 
+width:100%; 
+height: 100%; 
+color:navy;
+font-family:sans-serif;
+font-weight:bolder;
+border:5px double navy;
+}
+.table{
+	font-size:large;
+}
+.hidden{
+	display:none;
+}
+.update_form{
+	display: inline;
+	color:blue
+}
+li{
+	background-color:pink !important;
+	line-height: 1.5;
+	font-size: large; 
+}
+.tr_bordered{
+	color:navy;
+	border: 1px solid navy;
+}
+.tr_unbordered{
+	border:hidden;
+}
+ul{
+	border: 2px solid navy !important;
+}
+u{
+	border-bottom: 2.5px dotted navy;
+    text-decoration: none;
+}
+.u_gst{
+	border-bottom: 2px solid navy;
+}
+.list-group-item{
+color: navy !important;
+border:hidden;
+}
+.my-table {
+border: 2px solid navy;
+width:100%;	
+}
+.footer{
+	margin-left:8cm;
+}
+.my-table tr
+{
+border: 2px solid navy;
+width:100%;	
+}
+.line{
+	line-height: 25px;
+}
+.mytable2 tr
+{
+border: 2px solid navy;
+}
+.mytable2{
+border: 2px solid navy;
+width:100%;	
+}
+.my-table td
+{
+border: 2px solid navy;
+width:100%;	
+}
+.mytable2 td
+{
+border: 2px solid navy;
+}
+.phool{
+	font-size:large;
+	padding:10px;
+}
+td{
+	color:navy!important;
+	background-color:pink !important;
+}
+h1{
+	font-family:serif;
+	font-size:80px; 
+}
+.mob1{
+	font-size:large;
+	margin-left:19pc;
+}
+.mob2{
+	font-size:large;
+	margin-left:18.7pc;
+}
+.GSTIN,.mpcode{
+	font-size:large;
+	margin-left:.5pc;
+}
+.jaimaa{
+	font-size:large;
+	margin-left:14pc;
+}
+.GST{
+	font-size:large;
+	margin-left:20pc;
+}

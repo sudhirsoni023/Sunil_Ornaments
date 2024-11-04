@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{billing/bill_base::layout(~{::section})}"
+  >
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<section>
+
+	<div class="card ml-2 contact-card" style="background-color: pink; border:hidden;" th:if="${bills.size()}">
+	<div class="card-body">
+	<div th:if="${message}" th:classappend="${alert_class}" class="alert alert-dismissible fade show" role="alert">
+	<strong th:text="${message}"></strong>
+	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+	<h1 class="text-center">Your Bills</h1>
+	<form class="d-flex" th:action="@{/search}">
+        <input class="form-control me-2" id="searchQuery" name="searchQuery" type="search" placeholder="Enter Name here to search" aria-label="Search">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+      <br>
+	<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Invoice No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Particulars</th>
+      <th scope="col">Net Total</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="b:${bills}">
+      <th scope="row" th:text="${b.invoice_no}"></th>
+      <td th:text="${b.name}"></td>
+      <td th:text="${b.date}"></td>
+       <td th:text="${b.particulars}"></td>
+      <td th:text="${b.net_total}"></td>
+      <td>
+      <div>
+      <a th:href="@{'/view_bill/'+${b.invoice_no}}" class="btn btn-warning btn-sm">View</a>
+      <form method="post" th:action="@{'/update_bill/'+${b.invoice_no}}" style="display:inline;">
+      <button type="submit" class="btn btn-primary btn-sm">Update</button>
+      </form>
+      <form method="post" th:action="@{'/delete_bill/'+${b.invoice_no}}" style="display:inline;">
+      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+      </form>
+      </div>
+      
+      </td>
+    </tr>
+   
+  </tbody>
+</table>
+
+	</div>
+	</div>
+
+	<h2 th:unless="${bills.size()}" class="text-center bg-danger text-white">No Bills Present here, Please start adding bills !!</h2>
+	
+</section>
+</body>
+</html>

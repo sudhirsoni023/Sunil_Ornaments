@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{billing/bill_base::layout(~{::section})}"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>update bill</title>
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+	<section>
+	
+	<div class="card mr-3 ml-3" style="background-color: pink; border:hidden;">
+		<div class="card-body">
+		
+     <h1 class="text-center">Update Bill Here</h1>
+      	<div class="container-fluid mt-1">
+      		<div class="row">
+      			<div class="col-md-10 offset-md-0">
+      	<form
+      	th:object="${bill}"
+      	method="POST"
+      	th:action="@{/process-update-bill}" 
+      	>
+      
+      <!-- Serial No field starts here-->
+      <div class="input-group mt-3">
+			<input type="hidden" id="sl_no" name="sl_no"  th:value="${bill.sl_no}" placeholder="Please Enter Sl no here" class="hidden"/>
+      	</div>
+      	</
+      	<!-- Serial No field ends here-->
+      
+      	
+      	
+      	<!-- Name field starts here-->
+      	      	<H5 class="text-left" style="margin-left:4pc;"><label for="name">Name</label></H5>      
+      	<div class="input-group mb-2">
+
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-file-signature"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="text" id="name" name="name" required th:value="${bill.name}" placeholder="Please Enter Name here" class="form-control"/>
+      	</div>
+      	
+     	<!-- Name field Ends here-->
+
+      	<!-- Invoice field starts here-->
+      <H5 class="text-left" style="margin-left:4pc;"><label for="name">Invoice</label></H5>      
+      <div class="input-group mb-2" >
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-file-invoice"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="number" id="invoice_no" th:value="${bill.invoice_no}" min ="1" required name="invoice_no"  placeholder="Please Enter invoice no here" class="form-control"/>
+      	</div>
+      	
+      	<!-- Invoice field ends here-->
+      
+      
+      	<!-- Date field starts here-->
+     <H5 class="text-left" style="margin-left:4pc;"><label for="name">Date</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-calendar"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="date" id="date" name="date" th:value="${bill.date}" required placeholder="Please Enter Date here"  class="form-control"/>
+      	</div>
+      	
+      	<!-- Date field ends here-->
+      	
+      	
+      	<!-- Aadhar field starts here-->
+      <H5 class="text-left" style="margin-left:4pc;"><label for="name">Aadhar No.</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-hashtag"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="number" id="aadhar_no" name="aadhar_no" min="111111111111" max="999999999999" th:value="${bill.aadhar_no}" placeholder="Please Enter Aadhar No. here" class="form-control"/>
+      	</div>
+      	
+      	<!-- Aadhar field ends here-->
+      	
+      	
+      
+      <!-- PAN field starts here-->
+      <H5 class="text-left" style="margin-left:4pc;"><label for="name">PAN No.</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-hashtag"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="text" id="pan_no" name="pan_no" maxlength="10" th:value="${bill.pan_no}" placeholder="Please Enter PAN No. here" class="form-control"/>
+      	</div>
+      	
+      	<!-- PAN field ends here-->
+      	
+      	
+      	
+      	<!-- GST field starts here-->
+      <H5 class="text-left" style="margin-left:4pc;"><label for="name">GST No.</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-hashtag"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="text" id="gstin_no" th:value="${bill.gstin_no}" maxlength="15" name="gstin_no" placeholder="Please Enter GST No. here" class="form-control"/>
+      	</div>
+      	
+      	<!-- GST field ends here-->
+      	
+      	
+      	<!-- Particulars field starts here -->
+      	<H5 class="text-left" style="margin-left:4pc;"><label for="name">Particulars</label></H5>      
+      	<div class="input-group mb-2">
+      	
+      	<textarea id="particulars" name="particulars" th:text="${bill.particulars}" class="form-control" rows="10"  placeholder="Enter Particulars Here" onkeydown="gotoNextInputForTextArea(event)"></textarea>
+      	</div>
+      	
+      	<!-- Particulars field ends here -->
+      	
+      	
+      	<!-- Weight field starts here-->
+      <H5 class="text-left" style="margin-left:4pc;"><label for="name">Weight</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-scale-balanced"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="text" id="weight"  name="weight" th:value="${bill.weight}" required placeholder="Please Enter Weight in grams here" class="form-control" onkeydown="goToNextInput(event)"/>
+      	</div>
+      	
+      	<!-- Weight field ends here-->
+      	
+      	<!-- Rate field starts here-->
+      <H5 class="text-left" style="margin-left:4pc;"><label for="name">Rate</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-percent"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="number" th:value="${bill.rate}" onkeydown="calculateAmountBeforeTax(event)" id="rate" required  name="rate"  placeholder="Please Enter Rate of Particulars in Rupees here" class="form-control"/>
+      	</div>
+      	
+      	<!-- Rate field ends here-->
+      	
+      	
+      	<!-- Amount field starts here-->
+     <H5 class="text-left" style="margin-left:4pc;"><label for="name">Amount</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-indian-rupee-sign"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="text" id="amount" name="amount" th:value="${bill.amount}" required placeholder="Please Enter Amount before tax in Rupees here" class="form-control"/>
+      	</div>
+      	
+      	<!-- Amount field ends here-->
+      	
+      	
+      	<!-- CGST field starts here-->
+      <H5 class="text-left" style="margin-left:4pc;"><label for="name">CGST</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-text">
+			<div class="input-group-prepend">
+      	<i class="fa-solid fa-briefcase"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="text" id="cgst" name="cgst" th:value="${bill.cgst}" required placeholder="Please Enter CGST in Rupees here" class="form-control"/>
+      	</div>
+      	
+      	<!-- CGST field ends here-->
+      	
+      	
+      	<!-- SGST field starts here-->
+     <H5 class="text-left" style="margin-left:4pc;"><label for="name">SGST</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-briefcase"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="text" id="sgst" name="sgst" th:value="${bill.sgst}" required placeholder="Please Enter SGST in Rupees here" class="form-control"/>
+      	</div>
+      	
+      	<!-- SGST field ends here-->
+      	
+      	
+      	<!-- Net Total field starts here-->
+      <H5 class="text-left" style="margin-left:4pc;"><label for="name">Net Total</label></H5>      
+      <div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-wallet"></i>&emsp;
+      	</div>
+      	</div>
+			<input type="text" id="net_total" name="net_total" th:value="${bill.net_total}" required placeholder="Please Enter Total Amount after tax in Rupees here" class="form-control"/>
+      	</div>
+      	
+      	<!-- Net Total field ends here-->
+      	
+      	
+      	<!-- total invoice value in Words field starts here-->
+      	<H5 class="text-left" style="margin-left:4pc;"><label for="name">Total Invoice value In Words</label></H5>      
+      	<div class="input-group mb-2 ">
+      		<div class="input-group-prepend">
+      			<div class="input-group-text">
+					      	
+      	<i class="fa-solid fa-rupee-sign"></i> &emsp;
+      	</div>
+      	</div>
+			<input type="text" id="total_invoice_value_inwords" th:value="${bill.total_invoice_value_inwords}" required name="total_invoice_value_inwords"  placeholder="Please Enter total invoice value in words here" class="form-control"/>
+      	</div>
+      	
+     	<!-- total_invoice_value_inwords in Words field Ends here-->
+      	
+      	<div class="container text-center mt-3">
+      	<button type="submit" class="btn btn-outline-primary">
+      	Update Bill
+      	</button>
+      	<button type="reset" class="btn btn-outline-primary">
+      	Reset
+      	</button>
+      	</div>
+      	</form>
+      </div>
+      </div>
+      </div>
+    </div>
+</div>    
+	
+	<!-- For auto focusing next input field when enter button is clicked  -->
+      
+<script>
+var allFields = document.querySelectorAll(".form-control");
+for(var i=1; i<7; i++)
+{
+	allFields[i].addEventListener("keydown", function(event){
+	if(event.keyCode == 13){
+event.preventDefault();
+if (this.parentElement.nextElementSibling.nextElementSibling.querySelector('input'))
+	this.parentElement.nextElementSibling.nextElementSibling.querySelector('input').focus();
+if (this.parentElement.nextElementSibling.nextElementSibling.querySelector('textarea'))
+	this.parentElement.nextElementSibling.nextElementSibling.querySelector('textarea').focus();
+}
+});
+}
+	</script>
+<!-- end function here  -->
+	</section>
+	
+</body>
+</html>
