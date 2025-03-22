@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:fragment="layout(content)"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title th:text="${title}">Confirm Delete</title>
+</head>
+<body>
+<p>Are you sure, you want to delete all the bills together?
+<form method="post" th:action="@{'/Delete-Confirm'}" style="display:inline;">
+      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+      </form>
+<button><a th:href="@{'/view-bills'}" style="text-decoration:none">No</a></button>
+</body>
+</html>

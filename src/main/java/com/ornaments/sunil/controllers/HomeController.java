@@ -141,10 +141,22 @@ public class HomeController {
 		return "billing/add_new_bill";
 	}
 
+	// For searching the bills with given name of customer
 	@GetMapping("/search")
 	public String search_Query(@RequestParam("searchQuery") String searchQuery, Model model) {
 		List<Bill> bills = this.billRepository.findByNameContaining(searchQuery);
 		model.addAttribute("bills", bills);
+		return "billing/view_bills";
+	}
+	
+	@GetMapping("/confirmDelete")
+	public String confirm_Delete() {
+		return "billing/confirm_delete";
+	}
+	
+	@PostMapping("/Delete-Confirm")
+	public String Delete_Confirm() {
+		this.billRepository.deleteAll()
 		return "billing/view_bills";
 	}
 }
