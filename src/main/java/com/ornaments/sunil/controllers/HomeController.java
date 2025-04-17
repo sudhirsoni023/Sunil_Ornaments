@@ -148,15 +148,15 @@ public class HomeController {
 		model.addAttribute("bills", bills);
 		return "billing/view_bills";
 	}
-	
+
 	@GetMapping("/confirmDelete")
 	public String confirm_Delete() {
 		return "billing/confirm_delete";
 	}
-	
+
 	@PostMapping("/Delete-Confirm")
 	public String Delete_Confirm() {
-		this.billRepository.deleteAll()
+		this.billRepository.deleteAll();
 		return "billing/view_bills";
 	}
 }

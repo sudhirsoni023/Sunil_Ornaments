@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 @Configuration
@@ -16,14 +16,13 @@ public class SecurityConfig {
 	@Autowired
 	private UserDetailsServiceImpl userDetailsServiceImpl;
 
-	
 	@Bean
-	public AuthenticationProvider auth () {
+	public AuthenticationProvider auth() {
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
 		daoAuthenticationProvider.setUserDetailsService(userDetailsServiceImpl);
 		daoAuthenticationProvider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
-//		daoAuthenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
+		// daoAuthenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
 		return daoAuthenticationProvider;
 	}
-	
+
 }
