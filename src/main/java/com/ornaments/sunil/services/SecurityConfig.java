@@ -17,7 +17,7 @@ public class SecurityConfig {
 	private UserDetailsServiceImpl userDetailsServiceImpl;
 
 	@Bean
-	public AuthenticationProvider auth() {
+	AuthenticationProvider auth() {
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
 		daoAuthenticationProvider.setUserDetailsService(userDetailsServiceImpl);
 		daoAuthenticationProvider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());

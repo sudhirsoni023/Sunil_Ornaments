@@ -53,7 +53,7 @@ public class HomeController {
 
 	// For opening of particular bill page with given invoice no
 	@GetMapping("/view_bill/{invoice_no}")
-	public String ViewBillDetails(Model model, @PathVariable("invoice_no") String invoice_no) {
+	public String ViewBillDetails(Model model, @PathVariable String invoice_no) {
 		model.addAttribute("title", "View Bill-Details - Smart Contact Manager");
 
 		Bill b = this.billRepository.findByinvoice_no(invoice_no);
@@ -63,7 +63,7 @@ public class HomeController {
 
 	// For Deleting the given invoice no and then opening all bills view-page
 	@PostMapping("/delete_bill/{invoice_no}")
-	public String DeleteBillDetails(Model model, @PathVariable("invoice_no") String invoice_no) {
+	public String DeleteBillDetails(Model model, @PathVariable String invoice_no) {
 		model.addAttribute("title", "Delete Bill-Details - Smart Contact Manager");
 
 		Bill b = this.billRepository.findByinvoice_no(invoice_no);
@@ -77,7 +77,7 @@ public class HomeController {
 
 	// For opening of update bill form page
 	@PostMapping("/update_bill/{invoice_no}")
-	public String UpdateBillDetails(Model model, @PathVariable("invoice_no") String invoice_no) {
+	public String UpdateBillDetails(Model model, @PathVariable String invoice_no) {
 		model.addAttribute("title", "Update Bill-Details - Smart Contact Manager");
 
 		Bill b = this.billRepository.findByinvoice_no(invoice_no);
@@ -88,12 +88,12 @@ public class HomeController {
 	// For updating the given invoice details and opening the all bills page
 	@PostMapping("/process-update-bill")
 	public String processUpdateBill(@ModelAttribute Bill bill, Model model,
-			@RequestParam("invoice_no") String invoice_no) {
+			@RequestParam String invoice_no) {
 		try {
-			String net_total = String.format("%.2f", Double.parseDouble(bill.getNet_total()));
-			String amount = String.format("%.2f", Double.parseDouble(bill.getAmount()));
-			String cgst = String.format("%.2f", Double.parseDouble(bill.getCgst()));
-			String sgst = String.format("%.2f", Double.parseDouble(bill.getSgst()));
+			String net_total = "%.2f".formatted(Double.parseDouble(bill.getNet_total()));
+			String amount = "%.2f".formatted(Double.parseDouble(bill.getAmount()));
+			String cgst = "%.2f".formatted(Double.parseDouble(bill.getCgst()));
+			String sgst = "%.2f".formatted(Double.parseDouble(bill.getSgst()));
 			bill.setNet_total(net_total);
 			bill.setAmount(amount);
 			bill.setCgst(cgst);
@@ -116,10 +116,10 @@ public class HomeController {
 	@PostMapping("/process-bill")
 	public String processAddNewBill(@ModelAttribute Bill bill, Model model) {
 		try {
-			String net_total = String.format("%.2f", Double.parseDouble(bill.getNet_total()));
-			String amount = String.format("%.2f", Double.parseDouble(bill.getAmount()));
-			String cgst = String.format("%.2f", Double.parseDouble(bill.getCgst()));
-			String sgst = String.format("%.2f", Double.parseDouble(bill.getSgst()));
+			String net_total = "%.2f".formatted(Double.parseDouble(bill.getNet_total()));
+			String amount = "%.2f".formatted(Double.parseDouble(bill.getAmount()));
+			String cgst = "%.2f".formatted(Double.parseDouble(bill.getCgst()));
+			String sgst = "%.2f".formatted(Double.parseDouble(bill.getSgst()));
 			bill.setNet_total(net_total);
 			bill.setAmount(amount);
 			bill.setCgst(cgst);
@@ -143,7 +143,7 @@ public class HomeController {
 
 	// For searching the bills with given name of customer
 	@GetMapping("/search")
-	public String search_Query(@RequestParam("searchQuery") String searchQuery, Model model) {
+	public String search_Query(@RequestParam String searchQuery, Model model) {
 		List<Bill> bills = this.billRepository.findByNameContaining(searchQuery);
 		model.addAttribute("bills", bills);
 		return "billing/view_bills";
